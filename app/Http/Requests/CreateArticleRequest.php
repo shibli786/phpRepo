@@ -23,9 +23,7 @@ class CreateArticleRequest extends Request
      */
     public function rules()
     {
-        return [
-            "title"=>"required|min:3",
-            "body"=>"required"
-        ];
-    }
+       
+      return ['article_title'=>'required','body'=>'required'];
+     }
 }

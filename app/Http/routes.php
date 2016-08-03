@@ -13,10 +13,17 @@
 Route::get('/', "CardsController@laravel");
 Route::get('/cards', "CardsController@index");
 
+
 Route::get('cards/{card}', "CardsController@show");
 Route::post('cards/{card}/notes', "AddNotesController@addNotes");
-Route::get('/articles/create', "ArticleController@addArticleForm");
-Route::get('/articles', "ArticleController@index");
-Route::get('/articles/edit/{id}',"ArticleController@editArticle");
 
-Route::post('articles/save', "ArticleController@saveArticle");
+//Route::post('/articles/update/{id}', "ArticleController@updateArticle");
+
+//Route::get('/articles/create', "ArticleController@addArticleForm");
+//Route::get('/articles', "ArticleController@index");
+//Route::get('/articles/edit/{id}',"ArticleController@editArticle");
+//Route::post('/articles/save', "ArticleController@store");
+Route::get('/articles/{article}/delete',"ArticlesControlle@destroy");
+Route::resource('articles','ArticlesControlle');
+
+
