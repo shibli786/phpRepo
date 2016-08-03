@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
+use App\Http\Requests\CreateArticleRequest;
 
 class ArticlesControlle extends Controller
 {
@@ -43,7 +44,7 @@ class ArticlesControlle extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArticleRequest $request)
     {
         //
          $article=new Article;
@@ -85,7 +86,7 @@ class ArticlesControlle extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, Article $articles)
+    public function update(CreateArticleRequest  $req, Article $articles)
     {
   //  return$articles;
 
@@ -104,7 +105,7 @@ class ArticlesControlle extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        
+
  
         return redirect('/articles');
 

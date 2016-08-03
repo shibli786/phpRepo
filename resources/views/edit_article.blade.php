@@ -28,5 +28,5 @@ Create Article
 
 
 	</row>
-
+@include('errors.basic_validation')
 @stop
