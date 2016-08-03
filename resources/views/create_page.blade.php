@@ -9,13 +9,13 @@ Create Article
 </h1>
 
 	<div class="row">
-		<form  action="/articles/save" method="POST">
+		<form  action="/articles" method="POST">
 		<strong>Title:</strong>
 			<input class="form-control"  type="text" name="article_title">
 
 		</input>
 	<strong>Body:</strong>
-	<textarea class="form-control" value="" name="body">
+	<textarea class="form-control" name="body">
 
 	</textarea>
 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" >
@@ -27,5 +27,6 @@ Create Article
 
 
 	</row>
+	@include('errors.basic_validation')
 
 @stop

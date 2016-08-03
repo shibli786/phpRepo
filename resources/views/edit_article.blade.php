@@ -9,16 +9,17 @@ Create Article
 </h1>
 
 	<div class="row">
-		<form class="form-group">
+		<form method="POST" action="/articles/{{$articles->id}}" class="form-group">
+			<input name="_method" type="hidden" value="PUT">
 		<strong>Title:</strong>
-			<input class="form-control" value="{{$id->title}}" type="text" name="article_title">
+			<input class="form-control" value="{{$articles->title}}" type="text" name="article_title">
 
 		</input>
 	<strong>Body:</strong>
-	<textarea class="form-control" value="" name="body">{{$id->body}}
+	<textarea class="form-control" value="" name="body">{{$articles->body}}
 
 	</textarea>
-<input type="hidden" name="_token" value="{{{ csrf_token() }}}" 
+<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 
 	<button type="submit" class="btn btn-primary">Add Article
 	</button>
@@ -27,5 +28,5 @@ Create Article
 
 
 	</row>
-
+@include('errors.basic_validation')
 @stop
