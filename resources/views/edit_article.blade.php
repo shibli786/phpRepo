@@ -12,7 +12,7 @@ Create Article
 		<form method="POST" action="/articles/{{$articles->id}}" class="form-group">
 			<input name="_method" type="hidden" value="PUT">
 		<strong>Title:</strong>
-			<input class="form-control" value="{{$articles->title}}" type="text" name="article_title">
+			<input class="form-control" value="{{$articles->title}}" type="text" name="title">
 
 		</input>
 	<strong>Body:</strong>

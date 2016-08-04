@@ -24,6 +24,6 @@ class CreateArticleRequest extends Request
     public function rules()
     {
        
-      return ['article_title'=>'required','body'=>'required'];
+      return ['title'=>'required','body'=>'required'];
      }
 }

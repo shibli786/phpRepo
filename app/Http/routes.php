@@ -24,6 +24,7 @@ Route::post('cards/{card}/notes', "AddNotesController@addNotes");
 //Route::get('/articles/edit/{id}',"ArticleController@editArticle");
 //Route::post('/articles/save', "ArticleController@store");
 Route::get('/articles/{article}/delete',"ArticlesControlle@destroy");
-Route::resource('articles','ArticlesControlle');
+Route::get('/logout',"Auth\AuthController@demo");
 
 
+Route::controllers(['auth'=>'Auth\AuthController','password'=>'Auth\PasswordController']);

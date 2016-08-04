@@ -10,8 +10,11 @@ Create Article
 
 	<div class="row">
 		<form  action="/articles" method="POST">
+
+			
+			<input type="hidden" name="user_id" value="1">
 		<strong>Title:</strong>
-			<input class="form-control"  type="text" name="article_title">
+			<input class="form-control"  type="text" name="title">
 
 		</input>
 	<strong>Body:</strong>
