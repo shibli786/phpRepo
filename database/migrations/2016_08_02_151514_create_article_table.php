@@ -17,6 +17,8 @@ class CreateArticleTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->text('body');
+
+            $table->integer('user_id')->unsigned()->refrences('id')->on('users')->onDelete('cascade');
         });
     }
 

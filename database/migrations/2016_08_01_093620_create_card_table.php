@@ -13,7 +13,7 @@ class CreateCardTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->increments('card_id');
+            $table->increments('id');
            
             $table->timestamps();
         });

@@ -68,5 +68,9 @@ class ArticleController extends Controller
 
 	}
 
+public function des()
+{
+	dd("he");
+}
 
 }

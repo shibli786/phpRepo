@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -69,4 +68,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    
+    public function demo()
+{
+    dd('sfsdf');
+}
+
 }

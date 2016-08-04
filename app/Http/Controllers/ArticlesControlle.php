@@ -11,6 +11,10 @@ use App\Http\Requests\CreateArticleRequest;
 class ArticlesControlle extends Controller
 {
 
+public function des()
+{
+    dd("he");
+}
 
     /**
      * Display a listing of the resource.
@@ -46,12 +50,15 @@ class ArticlesControlle extends Controller
      */
     public function store(CreateArticleRequest $request)
     {
-        //
-         $article=new Article;
-         $article->title=$request->article_title;
-         $article->body=$request->body;
-         $article->save();
-
+        //Method 1
+         //$article=new Article;
+         //$article->title=$request->article_title;
+         //$article->body=$request->body;
+         //$article->save();
+        //Method 2
+        $ar=new Article($request->all());
+        Auth::user->articles()->save($ar);
+        //Article::create($request->all());
         return $this->index();
     }
 
@@ -90,8 +97,13 @@ class ArticlesControlle extends Controller
     {
   //  return$articles;
 
-        $articles->body=$req->body;
-        $articles->title=$req->article_title;
+        //Method 1
+        //$articles->body=$req->body;
+        //$articles->title=$req->article_title;
+
+        //Method 2
+
+       // Article::update()
         $articles->update();
         return redirect('/articles');
     }
