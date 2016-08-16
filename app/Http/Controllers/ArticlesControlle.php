@@ -6,14 +6,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
-use App\Http\Requests\CreateArticleRequest;
+use App\Http\Requests\CreateArticleRequest;use Illuminate\Support\Facades\Auth;
+use Log;
+class ArticlesControlle extends Controller{
 
-class ArticlesControlle extends Controller
-{
+public function __construct(){
+            Log::info('ArticlesControlle executed');
+
+
+            $this->middleware('auth',['only'=>'create']);
+}
+
 
 public function des()
 {
-    dd("he");
+    //dd("he");
 }
 
     /**
@@ -57,7 +64,12 @@ public function des()
          //$article->save();
         //Method 2
         $ar=new Article($request->all());
-        Auth::user->articles()->save($ar);
+        Auth::user()->articles()->save($ar);
+        Log::info(Auth::user());
+          Log::info("lets see inside");
+            Log::info(Auth::user()->articles->all());
+        \Session::flash('flash_message','Your Article has been created');
+
         //Article::create($request->all());
         return $this->index();
     }
@@ -95,7 +107,7 @@ public function des()
      */
     public function update(CreateArticleRequest  $req, Article $articles)
     {
-  //  return$articles;
+    //return $req->toArray();
 
         //Method 1
         //$articles->body=$req->body;
@@ -103,8 +115,8 @@ public function des()
 
         //Method 2
 
-       // Article::update()
-        $articles->update();
+        $articles->update($req->all());
+    
         return redirect('/articles');
     }
 

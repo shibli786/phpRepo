@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Requests;
-
+use Log;
 
 
 use App\Article;
@@ -68,9 +68,6 @@ class ArticleController extends Controller
 
 	}
 
-public function des()
-{
-	dd("he");
-}
+
 
 }
