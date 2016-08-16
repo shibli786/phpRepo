@@ -26,6 +26,13 @@ Create Article
 	<button type="submit" class="btn btn-primary">Add Article
 	</button>
 
+	<select multiple class="form-control" name="tags[]">
+	@foreach($tags as $key=>$tag)
+     <option value={{$key}}>{{$tag}}</option>
+	@endforeach
+		
+	</select>
+
 		</form>
 
 

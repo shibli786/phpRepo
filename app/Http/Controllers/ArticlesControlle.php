@@ -18,7 +18,7 @@ public function __construct(){
 }
 
 
-public function des()
+public function des(Sam $sam)
 {
     //dd("he");
 }
@@ -45,8 +45,10 @@ public function des()
 
     public function create()
     {
-       $id=['title'=>" ",'body'=>" "];
-    return view('create_page',compact('id'));
+     $tags =\App\Tag::lists('tag_name','id');
+
+      // $id=['title'=>" ",'body'=>" "];
+    return view('create_page',compact('tags'));
     }
 
     /**
@@ -57,6 +59,8 @@ public function des()
      */
     public function store(CreateArticleRequest $request)
     {
+
+  dd($request->input('tags'));
         //Method 1
          //$article=new Article;
          //$article->title=$request->article_title;
