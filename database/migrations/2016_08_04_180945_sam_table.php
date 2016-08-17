@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCardTable extends Migration
+class SamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,7 @@ class CreateCardTable extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
-            $table->increments('id');
-           $table->string('title');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -26,6 +22,6 @@ class CreateCardTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cards');
+        //
     }
 }

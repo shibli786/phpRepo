@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Authenticate
 {
+
+    public function __construct(){
+
+         log::info("Authenticate middleware constructer is called");
+
+
+    }
     /**
      * Handle an incoming request.
      *
