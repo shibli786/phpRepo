@@ -15,7 +15,7 @@ public function __construct(){
             Log::info('ArticlesControlle executed');
 
 
-            $this->middleware('auth',['only'=>['create','store','edit','postLike']]);
+            $this->middleware('auth',['only'=>['create','store','edit','postLike','destroy']]);
 }
 
 
@@ -93,11 +93,14 @@ public function __construct(){
      */
     public function show(Article $articles)
     {
+        $comments=$articles->comments()->get();
         if(Auth::user()){
       $authuser=Auth::user()->articles()->where('id',$articles->id)->first();
-        return view('show_article',['article'=>$articles,'auth'=>$authuser,'user'=>$articles->user()->first()]);
+        return view('show_article',['article'=>$articles,'comments'=>$comments]);
         }
-        return view('show_article',['article'=>$articles,'user'=>$articles->user()->first()]);   
+       
+        
+        return view('show_article',['article'=>$articles,'comments'=>$comments]);   
         
     }
 
@@ -144,8 +147,12 @@ public function __construct(){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Request $request)
     {
+
+        Log::info('destroy method ic called');
+            Log::info($request->article_id);
+        $article=Article::find($request->article_id);
         $article->delete();
 
  

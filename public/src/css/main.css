@@ -18,10 +18,52 @@ margin-top: 80px;
 
 }
 .posts .post-comment{
-align:center;
+
 margin-left: 50px;
+width: 576px;
 
-max-width: 90%;
+max-height: 40px;
+margin-bottom: 10px;
 
+
+}
+
+.posts .post-button{
+
+
+
+
+}
+.article-area{
+min-height: 300px;
+
+
+}
+.comments{
+
+	margin-top: 20px;
+}
+
+.comments .comment-by-user{
+
+margin-bottom: 20px;
+background: #DCDCDC;
+margin-left: 50px;
+width: 91%;
+padding-top: 20px;
+
+}
+.comments .comment-by-user .name , .body{
+
+margin-top: 5px;
+margin-left: 20px;
+
+
+}
+.comments .comment-by-user .info{
+
+	color: #aaa;
+font-style: italic;
+margin-left: 20px;
 
 }

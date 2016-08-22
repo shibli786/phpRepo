@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Like;
+use App\Tag;
+use App\User;
+use App\Comment;
 
 class Article extends Model
 {

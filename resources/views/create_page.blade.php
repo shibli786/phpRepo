@@ -19,9 +19,7 @@ Create Article
 
 		</input>
 	<strong>Body:</strong>
-	<textarea class="form-control" name="body">
-
-	</textarea>
+	<textarea class="form-control article-area" name="body" placeholder="Write your Content"></textarea>
 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" >
 
 	<button type="submit" class="btn btn-primary">Add Article

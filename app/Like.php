@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Article;
 use App\User;
-class like extends Model
+class Like extends Model
 {
 
 protected $fillable=['user_id','article_id'];

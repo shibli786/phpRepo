@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Like;
+use App\Comment;
 class User extends Authenticatable
 {
 
@@ -42,6 +43,13 @@ class User extends Authenticatable
     public function likes()
     {
       return $this->hasMany('App\Like');
+    }
+
+    public function comments()
+    {
+
+            return $this->hasMany('App\Comment');
+       
     }
 }
 
