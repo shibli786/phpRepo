@@ -1,6 +1,7 @@
 
 @extends('master')
 
+
 @section('content')
 
 <h1>
@@ -12,7 +13,7 @@ Create Article
 		<form  action="/articles" method="POST">
 
 			
-			<input type="hidden" name="user_id" value="1">
+
 		<strong>Title:</strong>
 			<input class="form-control"  type="text" name="title">
 
@@ -25,6 +26,13 @@ Create Article
 
 	<button type="submit" class="btn btn-primary">Add Article
 	</button>
+
+	<select multiple class="form-control" name="tags[]">
+	@foreach($tags as $key=>$tag)
+     <option value={{$key}}>{{$tag}}</option>
+	@endforeach
+		
+	</select>
 
 		</form>
 

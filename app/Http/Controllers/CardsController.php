@@ -24,7 +24,7 @@ class CardsController extends Controller
 
 
     public function show($id){
-        echo $id;
+        //echo $id;
 
     	$cards=Card::findOrFail($id);
        // echo $cards->title;
@@ -41,10 +41,17 @@ class CardsController extends Controller
 
 
 
-public function laravel(){
+public function laravel()
+  {
       return view('welcome');
 
     }
+
+public function show()
+{
+  return view('')
+}
+  
 
 
 }

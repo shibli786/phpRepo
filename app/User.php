@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Like;
 class User extends Authenticatable
 {
 
@@ -36,6 +37,11 @@ class User extends Authenticatable
 
         return $this->hasMany('App\Article');
 
+    }
+
+    public function likes()
+    {
+      return $this->hasMany('App\Like');
     }
 }
 

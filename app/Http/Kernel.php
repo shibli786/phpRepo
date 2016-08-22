@@ -32,7 +32,12 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
+//<<<<<<< HEAD
             \Clockwork\Support\Laravel\ClockworkMiddleware::class,
+//=======
+                        
+                      
+//>>>>>>> 71a91ae1695a1be5cab23601fde7f6fcdafc2060
         ],
 
         'api' => [
@@ -49,6 +54,8 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+       'custom' => \App\Http\Middleware\MyMiddleware::class,
+
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,

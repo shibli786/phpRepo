@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use Log;
+//<<<<<<< HEAD
 
+//=======
+//>>>>>>> 71a91ae1695a1be5cab23601fde7f6fcdafc2060
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -38,15 +41,22 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+//<<<<<<< HEAD
         Log::info('Auth controller constructed executed: ');
 
              //// $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
 
+//=======
+            
+        Log::info('Auth controller executed');
+
+       $this->middleware('guest',['only'=>['getLogin','getRegister']]);
+//>>>>>>> 71a91ae1695a1be5cab23601fde7f6fcdafc2060
     }
 
     /**
      * Get a validator for an incoming registration request.
-     *
+    
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
@@ -74,10 +84,10 @@ class AuthController extends Controller
         ]);
     }
 
-    
-    public function demo()
-{
-    dd('sfsdf');
-}
+  public function Lok()
+    {
+        dd('dfg');
+       // return $this->logout();
+    }
 
 }

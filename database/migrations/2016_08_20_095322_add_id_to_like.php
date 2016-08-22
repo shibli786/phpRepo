@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SamTable extends Migration
+class AddIdToLike extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,10 @@ class SamTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('likes', function (Blueprint $table) {
+            //
+            $table->increments('id');
+        });
     }
 
     /**
@@ -22,6 +25,8 @@ class SamTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('likes', function (Blueprint $table) {
+            //
+        });
     }
 }

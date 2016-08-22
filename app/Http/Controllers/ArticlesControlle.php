@@ -6,31 +6,44 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
-use App\Http\Requests\CreateArticleRequest;
+use App\Http\Requests\CreateArticleRequest;use Illuminate\Support\Facades\Auth;
+use Log;
+use App\Like;
+class ArticlesControlle extends Controller{
 
-class ArticlesControlle extends Controller
-{
+public function __construct(){
+            Log::info('ArticlesControlle executed');
 
-public function des()
-{
-    dd("he");
+
+            $this->middleware('auth',['only'=>['create','store','edit','postLike']]);
 }
+
+
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+
      */
     public function index()
     {
 
-            $articles=Article::all();
+         $articles=Article::all();
 
-        return view('article',compact('articles'));
+         return view('article',['articles'=>$articles]);
         
-    }
+        }
 
-    /**
+
+        public function userArticle()
+        {
+           $articles=Auth::user()->articles()->get();
+            return view('article',compact('articles'));
+
+        }
+
+       /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,8 +51,10 @@ public function des()
 
     public function create()
     {
-       $id=['title'=>" ",'body'=>" "];
-    return view('create_page',compact('id'));
+     $tags =\App\Tag::lists('tag_name','id');
+
+      // $id=['title'=>" ",'body'=>" "];
+    return view('create_page',compact('tags'));
     }
 
     /**
@@ -50,14 +65,22 @@ public function des()
      */
     public function store(CreateArticleRequest $request)
     {
+//  dd($request->all());
+       // dd($request->input('tags'));
         //Method 1
-         //$article=new Article;
-         //$article->title=$request->article_title;
-         //$article->body=$request->body;
-         //$article->save();
+        //$article=new Article;
+        //$article->title=$request->article_title;
+        //$article->body=$request->body;
+        //$article->save();
         //Method 2
-        $ar=new Article($request->all());
-        Auth::user->articles()->save($ar);
+      //  $ar=new Article($request->all());
+
+     Auth::user()->articles()->save(new Article($request->all()))->tags()->attach($request->input('tags'));
+        Log::info(Auth::user());
+        //  Log::info("lets see inside");
+         //   Log::info(Auth::user()->articles->all());
+        \Session::flash('flash_message','Your Article has been created');
+
         //Article::create($request->all());
         return $this->index();
     }
@@ -68,9 +91,14 @@ public function des()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $articles)
     {
-        //
+        if(Auth::user()){
+      $authuser=Auth::user()->articles()->where('id',$articles->id)->first();
+        return view('show_article',['article'=>$articles,'auth'=>$authuser,'user'=>$articles->user()->first()]);
+        }
+        return view('show_article',['article'=>$articles,'user'=>$articles->user()->first()]);   
+        
     }
 
     /**
@@ -86,6 +114,7 @@ public function des()
 
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -93,18 +122,19 @@ public function des()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(CreateArticleRequest  $req, Article $articles)
     {
-  //  return$articles;
 
+        //return $req->toArray();
         //Method 1
         //$articles->body=$req->body;
         //$articles->title=$req->article_title;
 
         //Method 2
 
-       // Article::update()
-        $articles->update();
+        $articles->update($req->all());
+    
         return redirect('/articles');
     }
 
@@ -123,5 +153,40 @@ public function des()
 
     }
 
+    public function postLike(Request  $request)
+    {
+        \Log::info('post like is called');
+        \Log::info($request->article_id);
+
+
+       $article= Article::where('id',$request->article_id)->first();
+       
+          \Log::info($article);
+      
+       if($article==null){
+        \Log::error('No article');
+         return null; 
+       }
+      
+      $like= $article->likes()->where('user_id',Auth::user()->id)->first();
+
+      
+       if($like==null){
+        $like= new Like;
+        $like->article_id=$request->article_id;
+        Log::info($like);
+
+           Auth::user()->likes()->save($like);
+        \Log::info("success");
+
+       }
+       else{
+
+          Auth::user()->likes()->where('article_id',$request->article_id)->delete();
+          \Log::info('deleted');
+       }
+
+
+    }
 
 }
