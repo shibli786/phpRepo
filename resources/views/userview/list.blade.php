@@ -24,7 +24,7 @@ Users
 
 @if(isset($item->tag_name))
 <a href="#">{{
-$item->tag_name}}</a>
+$item->tag_name." x "}}</a>{{$item->articles()->count()}}
 @else
 <a href="#">{{$item->name."\n"}}{{ $item->email}}</a>
 @endif

@@ -21,7 +21,7 @@ class CreateTagsTable extends Migration
 
          Schema::create('tag_article', function (Blueprint $table) {
             $table->integer('tag_id')->unsigned()->index()->foriegn()->refrences('id')->on('tags');
-
+                        $table->engine = 'InnoDB'
                  $table->integer('article_id')->unsigned()->index()->foriegn()->refrences('id')->on('articles');
             $table->timestamps();
         });
