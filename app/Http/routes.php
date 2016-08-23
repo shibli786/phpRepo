@@ -17,8 +17,9 @@ Route::get('/myarticles','ArticlesControlle@userArticle');
 Route::controllers(['auth'=>'Auth\AuthController','password'=>'Auth\PasswordController']);
 Route::get('/users','UserController@index');
 Route::get('/tags','TagController@index');
-
+ \Log::info("Routes");
 Route::post('/like','ArticlesControlle@postLike');
+Route::post('/articles/{id}/comment','CommentsController@store');
 
 
 

@@ -4,12 +4,13 @@
 
 @section('content')
 
-<h1>
+
+
+	<div class="row col-md-8 col-md-offset-2">
+	<h3>
 Create Article
 
-</h1>
-
-	<div class="row">
+</h3>
 		<form  action="/articles" method="POST">
 
 			
@@ -33,9 +34,10 @@ Create Article
 	</select>
 
 		</form>
+@include('errors.basic_validation')
 
+	</div>
+	
 
-	</row>
-	@include('errors.basic_validation')
 
 @stop

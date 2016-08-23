@@ -18,7 +18,7 @@
 
 
 
-		<div class="container " >
+		<div class="container whole " >
 
 <div class=" row btn-group nav-links" style="float:right; ">
 <a href="{{URL::to('users')}}" class="btn btn-success" > Users</a>
@@ -56,7 +56,7 @@
 
 
 
-@yield('footer')
+<div class="footer "><p class="footer-text">cc 20150-16<p></div>
 </body>
 
 

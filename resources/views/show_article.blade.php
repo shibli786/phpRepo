@@ -1,34 +1,50 @@
 @extends('master')
 
 @section('content')
-<div class="posts single col-md-8">
+<div class="posts single col-md-7 col-md-offset-2">
 
 <header class="title"><h3>{{$article->title}}<h3></header>
-	<article class="post">
+	<article class="post" val='{{ $article->id}}'">
 		<p>{{$article->body}}</p>
 		@include('partials.like_comment_share')
 
 		
-		</article>
-		<form>
-		<div class="row">
+	</article>
 
-	<textarea  class="form-control post-comment form-control" placeholder="Write a comment"></textarea>
-	<button class="btn btn-info pull-right  post-button">Comment</button></div>
 
-	<div class="row comments ">
-	@foreach($comments as $comment)
+	<div class="row comments " id="comments">
+		@foreach($comments as $comment)
 
-		<div class="row comment-by-user">
-			<a href="#"><strong class="name">{{$comment->user()->first()->name}}</strong></a>
-			<p class="body"> {{$comment->body}}</p>
-			<p class="info">{{$comment->created_at}}</p>
+			<div class="row comment-by-user">
+			@if(Auth::user())
+			@if(Auth::user()->id==$comment->user()->get()[0]->id)
+			
+				<a class=" close pull-right" href="">&times;</a>
+			
+			@endif	
+			@endif
+				<a href="#"><strong class="name">{{$comment->user()->first()->name}}</strong></a>
+				<p class="body"> {{$comment->body}}</p>
+				<p class="info">{{$comment->created_at}}</p>
 
-		</div>
-		
+			</div>
+			
 
-	@endforeach
+		@endforeach
 	</div>
+	
+		@if(Auth::user())
+		<div class="row comment-form">
+
+		<textarea  class="form-control post-comment form-control"  onkeypress="return runScript(event)" name="body" placeholder="Write a comment"></textarea>
+		<button class="btn btn-info pull-right  post-button">Comment</button>
+		</div>
+		@else
+		<div class="row login-to-comment">
+		<a class="btn btn-success " href="{{URL::to('/auth/login')}}">Login to Comment</a>
+		</div>
+		@endif
+	
 </div>
 	
 
@@ -43,7 +59,9 @@
 	    var likeUrl='{{URL::to("/like")}}';
 	    var postId='{$article->id}}';
 	    var isloggedin='{{Auth::user()}}';
+	    var authName='{{Auth::user()?Auth::user()->name:"anonymous user"}}'
 	    var deleteUrl="{{URL::to('articles/'.$article->id)}}";
+	    var commentUrl="{{URL::to('articles/'.$article->id.'/comment')}}";
 
  </script>
 	  

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Article;
+use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -34,9 +37,15 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Article $id)
     {
-        //
+        \Log::info($id);
+        $comment=new Comment;
+        $comment->user_id=Auth::user()->id;
+        $comment->body=$request->body;
+        $id->comments()->save($comment);
+
+
     }
 
     /**

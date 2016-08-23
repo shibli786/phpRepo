@@ -19,17 +19,12 @@ margin-top: 80px;
 }
 .posts .post-comment{
 
-margin-left: 50px;
-width: 576px;
-
-max-height: 40px;
-margin-bottom: 10px;
 
 
 }
 
 .posts .post-button{
-
+margin-bottom: 200px;
 
 
 
@@ -40,15 +35,20 @@ min-height: 300px;
 
 }
 .comments{
+height:60%;
+margin-top: 20px;
+overflow-y: auto;
+overflow: auto; 
+border-left: 3px solid #0000FF;
+margin-left: 50px;
 
-	margin-top: 20px;
 }
 
 .comments .comment-by-user{
 
 margin-bottom: 20px;
 background: #DCDCDC;
-margin-left: 50px;
+margin-left: 20px;
 width: 91%;
 padding-top: 20px;
 
@@ -65,5 +65,64 @@ margin-left: 20px;
 	color: #aaa;
 font-style: italic;
 margin-left: 20px;
+
+}
+
+.footer{
+
+width: 100%;
+text-align: center;
+height: 100px;
+color: white;
+background-color: #000000;
+
+
+
+}
+.footer .footer-text{
+
+padding: 44px;
+
+}
+
+ .comment-form {
+
+margin-left: 50px;
+width: 92%;
+
+max-height: 40px;
+margin-bottom: 10px;
+margin-top: 30px;
+
+
+}
+
+
+.comment-form .post-comment{
+
+
+width: 100%;
+
+max-height: 40px;
+margin-bottom: 10px;
+
+
+}
+
+.whole{
+
+height: auto;
+min-height: 500px;
+
+}
+.close{
+
+	margin-right: 15px;
+}
+
+.login-to-comment{
+	margin-top: 25px;
+	margin-bottom: 200px;
+	margin-left: 50px;
 
 }
