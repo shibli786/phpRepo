@@ -15,8 +15,10 @@ class UserTag extends Migration
         Schema::create('user_tag', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-$table->integer('user_id')->unsigned()->index()->foriegn('user_id')->refrences('id')->on('users')->onDelete('cascade');
-$table->integer('tag_id')->unsigned()->index()->foriegn('tag_id')->refrences('id')->on('tags')->onDelete('cascade');
+$table->integer('user_id')->unsigned();
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+$table->integer('tag_id')->unsigned();
+$table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         $table->engine = 'InnoDB';
         
         });

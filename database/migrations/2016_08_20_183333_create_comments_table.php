@@ -13,9 +13,14 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('article_id')->unsigned()->index()->foreign('article_id')->refrences('id')->on('articles')->onDelete('cascade');
-            $table->integer('user_id')->unsigned()->index()->foreign('user_id')->refrences('id')->on('users')->onDelete('cascade');
+            $table->integer('article_id')->unsigned()->unique();
+            $table->integer('user_id')->unsigned()->unique();
+            
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+        
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('body');
             $table->timestamps();
         });
