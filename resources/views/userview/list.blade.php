@@ -1,16 +1,17 @@
 @extends('master')
 @section('content')
-<div class="row">
-Users
+
+<div class="row col-md-12">
+
 <form>
-<div class="form-group">
-<input type="text" name="search" placeholder="Search User" class="form-control col-md-2">
+<div class="form-group" style="width:200px;">
+<input type="text" name="search" placeholder="Search User" class="form-control"><button type="submit" class="btn btn-info" style="margin-top:10px;">Search</button>
 </div>
-<button type="submit" class="btn btn-info col-md-1">Search</button>
+
 
 </form>
 </div>
-<hr>
+
 
 
 
@@ -23,10 +24,10 @@ Users
 <div style="margin-bottom:30px;"class="col-md-3">
 
 @if(isset($item->tag_name))
-<a href="#">{{
+<a href="tags/{{$item->id}}">{{
 $item->tag_name." x "}}</a>{{$item->articles()->count()}}
 @else
-<a href="#">{{$item->name."\n"}}{{ $item->email}}</a>
+<a href="users/{{$item->id}}">{{$item->name."          "}}</a><p>{{ $item->email." x "}}{{$item->tags()->count()}}</p>
 @endif
 </div>
 @endforeach

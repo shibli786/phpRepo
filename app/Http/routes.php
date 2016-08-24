@@ -13,13 +13,14 @@ return view('master');
 Route::get('/myarticles','ArticlesControlle@userArticle');
 
 
-
 Route::controllers(['auth'=>'Auth\AuthController','password'=>'Auth\PasswordController']);
 Route::get('/users','UserController@index');
 Route::get('/tags','TagController@index');
+Route::get('/tags/{id}','TagController@show');
  \Log::info("Routes");
 Route::post('/like','ArticlesControlle@postLike');
 Route::post('/articles/{id}/comment','CommentsController@store');
+Route::get('users/{user}','UserController@show');
 
 
 

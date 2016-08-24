@@ -39,7 +39,7 @@ class CommentsController extends Controller
      */
     public function store(Request $request,Article $id)
     {
-        \Log::info($id);
+        \Log::info($request);
         $comment=new Comment;
         $comment->user_id=Auth::user()->id;
         $comment->body=$request->body;

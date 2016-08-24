@@ -54,9 +54,18 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $id)
     {
-        //
+    $articles=$id->articles()->get();
+    \Log::info("tag controller show method $id");
+
+     return view('article',['articles'=>$articles]);
+
+
+
+
+
+
     }
 
     /**

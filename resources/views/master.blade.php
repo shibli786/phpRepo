@@ -18,14 +18,18 @@
 
 
 
-		<div class="container whole " >
-
-<div class=" row btn-group nav-links" style="float:right; ">
+		<div class="container whole" >
+<div class="row">
+<div class=" row btn-group nav-links col-md-4 col-md-offset-8">
 <a href="{{URL::to('users')}}" class="btn btn-success" > Users</a>
 <a href="{{URL::to('tags')}}" class="btn btn-success" > Tags</a>
 <a href="/questions" class="btn btn-success" >Questions</a>
 <a href="/askquestion" class="btn btn-success" >Ask Questions</a>
 </div>
+</div>
+<div class="row col-md-12"><hr></div>
+
+
 
 	
 			@if(Session::has('flash_message'))

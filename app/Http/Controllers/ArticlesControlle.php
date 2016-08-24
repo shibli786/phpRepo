@@ -76,6 +76,8 @@ public function __construct(){
       //  $ar=new Article($request->all());
 
      Auth::user()->articles()->save(new Article($request->all()))->tags()->attach($request->input('tags'));
+
+     Auth::user()->tags()->attach($request->input('tags'));
         Log::info(Auth::user());
         //  Log::info("lets see inside");
          //   Log::info(Auth::user()->articles->all());
