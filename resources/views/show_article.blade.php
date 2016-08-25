@@ -23,7 +23,8 @@
 			
 			@endif	
 			@endif
-				<a href="#"><strong class="name">{{$comment->user()->first()->name}}</strong></a>
+				<a href={{URL::to("users/".$comment->user()->first()->id)}}><strong class="name">{{$comment->user()->first()->name}}</strong></a>
+
 				<p class="body"> {{$comment->body}}</p>
 				<p class="info">{{$comment->created_at}}</p>
 

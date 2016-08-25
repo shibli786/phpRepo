@@ -57,5 +57,33 @@ class User extends Authenticatable
 
         return   $this->belongsToMany('App\Tag','user_tag');
     }
+
+
+
+    public function totalLikes()
+    {
+        $sum=0;
+        foreach ($this->articles()->get() as $article) {
+            $sum+=$article->likes()->count();
+
+        
+        }
+        return $sum;
+        
+    }
+
+
+     public function totalComments()
+    {
+        
+        $totalComments=0;
+          foreach ($this->articles()->get() as $article) {
+            $totalComments+=$article->comments()->count();
+
+        
+        }
+        return $totalComments;
+
+    }
 }
 
