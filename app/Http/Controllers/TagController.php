@@ -10,7 +10,7 @@ class TagController extends Controller
 {
     
     /**
-     * Display a listing of the resource.
+     * Display a listing of the tags .
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,11 +18,7 @@ class TagController extends Controller
     public function index()
     {
         $tags=Tag::paginate(50);
-     //  dd(compact('arr'));
-      $arr=['items'=>$tags];
-    //dd(compact('arr'));
-       // dd(compact($arr));
-       //dd(compact($arr))//;
+        $arr=['items'=>$tags];
         return view('userview.list',compact('arr'));
     
     }
@@ -34,7 +30,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -49,22 +45,17 @@ class TagController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified tags and related information.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Tag $id)
     {
-    $articles=$id->articles()->get();
-    \Log::info("tag controller show method $id");
+        $articles=$id->articles()->get();
+        \Log::info("tag controller show method $id");
 
-     return view('article',['articles'=>$articles]);
-
-
-
-
-
+         return view('article',['articles'=>$articles]);
 
     }
 

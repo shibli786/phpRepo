@@ -2,71 +2,26 @@
 
 
 
+
+
+
+Route::get('/myarticles','ArticlesController@userArticle');
+Route::controllers(['auth'=>'Auth\AuthController','password'=>'Auth\PasswordController']);
+Route::get('/users','UserController@index');
+Route::get('/tags','TagController@index');
+Route::get('/tags/{id}','TagController@show');
+Route::post('/like','ArticlesController@postLike');
+Route::post('/articles/{id}/comment','CommentsController@store');
+Route::get('users/{user}','UserController@show');
+Route::get('send','UserController@sendEmail');
+Route::resource('articles','ArticlesController');
 Route::get('/',function(){
 
 
 return view('master');
 
 });
-//
 
-Route::get('/myarticles','ArticlesControlle@userArticle');
-
-
-Route::controllers(['auth'=>'Auth\AuthController','password'=>'Auth\PasswordController']);
-Route::get('/users','UserController@index');
-Route::get('/tags','TagController@index');
-Route::get('/tags/{id}','TagController@show');
- \Log::info("Routes");
-Route::post('/like','ArticlesControlle@postLike');
-Route::post('/articles/{id}/comment','CommentsController@store');
-Route::get('users/{user}','UserController@show');
-
-
-
-class MethodTest
-{
-    public function __call($name, $arguments)
-    {
-
-    	echo "Method name is ".$name."<br>";
-        // Note: value of $name is case sensitive.
-        echo ""
-             . implode(', ', $arguments). "\n";
-    }
-
-    /**  As of PHP 5.3.0  */
-    public static function __callStatic($name, $arguments)
-    {
-        // Note: value of $name is case sensitive.
-     //   echo implode(',',$arguments);
-    }
-}
-
-
- // As of PHP 5.3.0
-
-
-$this->app->resolving(function( $foo, $app){
-	//static $a=0;$a++;
-  //echo "<br>    $a" ;
-   //var_dump($foo);
- //echo $method->hell("hehahaha");
-});
-
-//Route::get('/',function(){
-//	App::make('bar');
-//});
-
-
-
-
-class bar
-{
-
-
-
-}
 
 
 
@@ -103,4 +58,3 @@ class bar
 //Route::get('/logout',"Auth\AuthController@getLog");
 //Route::get('/logout',"Auth\AuthController@getLogout");
 
-Route::resource('articles','ArticlesControlle');

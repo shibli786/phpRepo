@@ -35,26 +35,23 @@ class User extends Authenticatable
     public function articles()
     {
 
-
         return $this->hasMany('App\Article');
 
     }
 
     public function likes()
     {
-      return $this->hasMany('App\Like');
+        return $this->hasMany('App\Like');
     }
 
     public function comments()
     {
-
-            return $this->hasMany('App\Comment');
-       
+        return $this->hasMany('App\Comment');     
     }
 
 
-    public function tags(){
-
+    public function tags()
+    {
         return   $this->belongsToMany('App\Tag','user_tag');
     }
 
@@ -63,13 +60,12 @@ class User extends Authenticatable
     public function totalLikes()
     {
         $sum=0;
-        foreach ($this->articles()->get() as $article) {
+        foreach ($this->articles()->get() as $article)
+        {
             $sum+=$article->likes()->count();
-
-        
         }
         return $sum;
-        
+      
     }
 
 
@@ -77,10 +73,8 @@ class User extends Authenticatable
     {
         
         $totalComments=0;
-          foreach ($this->articles()->get() as $article) {
-            $totalComments+=$article->comments()->count();
-
-        
+        foreach ($this->articles()->get() as $article) {
+            $totalComments+=$article->comments()->count();       
         }
         return $totalComments;
 

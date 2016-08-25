@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 
 use App\Http\Requests;
-use App\Jobs\SendWelcomEmail;
-use Illuminate\Support\Facades\Mail;
-class UserController extends Controller
+
+class Temp extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::paginate(50);
-      
-        $arr=['items'=>$users];
-        return view('userview.list')->with(compact('arr'));
+        //
     }
 
     /**
@@ -50,10 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-       return view('userview.user_profile',compact('user'));
-        
+        //
     }
 
     /**
@@ -88,21 +82,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function sendEmail()
-    {
-        //  \Log::info("Request Cycle with Queues Begins");
-        //$this->dispatch(new SendWelcomEmail());
-        //\Log::info("Request Cycle with Queues Ends");
-    
-        \Log::info("Request cycle without Queues started");
-        Mail::send('email.view', ['data'=>'data'], function ($message) {
-        $message->from('syed.shibli@daffodilsw.com', 'Christian Nwmaba');
-        $message->to('mshibli786@gmail.com');
-        });
-       \Log::info("Request cycle without Queues finished");
-
     }
 }
