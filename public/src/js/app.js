@@ -25,6 +25,8 @@ $('.like').on('click',function (event) {
 //function which handle ajax request
 
 function ajax(val) {
+
+
 	$.ajax({
 		method:"POST",
 		url:likeUrl,

@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    //
+    public function some()
+    {
+
+
+
+
+
+    }
 }

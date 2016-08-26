@@ -7,7 +7,9 @@
  	<script src="//code.jquery.com/jquery.js"></script>
  <script type="text/javascript" src="{{URL::to('src/js/app.js')}}"></script>
  <script type="text/javascript" src="{{URL::to('src/js/jquery.js')}}"></script>
-
+<meta http-equiv="cache-control" content="private, max-age=0, no-cache">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
 
 </head>
 

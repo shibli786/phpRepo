@@ -15,6 +15,8 @@ Route::post('/articles/{id}/comment','CommentsController@store');
 Route::get('users/{user}','UserController@show');
 Route::get('send','UserController@sendEmail');
 Route::resource('articles','ArticlesController');
+
+
 Route::get('/',function(){
 
 

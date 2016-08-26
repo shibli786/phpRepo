@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
-use App\Http\Requests\CreateArticleRequest;use Illuminate\Support\Facades\Auth;
-use Log;
+use App\Http\Requests\CreateArticleRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Events\LikeOnArticleEvent;
 use App\Like;
+use Log;
 class ArticlesController extends Controller{
 
     public function __construct(){
@@ -148,6 +150,13 @@ class ArticlesController extends Controller{
      */
     public function postLike(Request  $request)
     {
+        \Log::info($request);
+
+
+        $isLike=false;
+
+
+
         \Log::info('post like is called');
         \Log::info($request->article_id);
         $article= Article::where('id',$request->article_id)->first();
@@ -165,6 +174,7 @@ class ArticlesController extends Controller{
             Log::info($like);
             Auth::user()->likes()->save($like);
             \Log::info("success");
+            $isLike=true;
 
        }
 
@@ -172,8 +182,12 @@ class ArticlesController extends Controller{
 
           Auth::user()->likes()->where('article_id',$request->article_id)->delete();
           \Log::info('deleted');
+          $isLike=false;
        }
 
+
+        //firing an event of liking and unliking on post for notifying the authorof article
+        \Event::fire(new LikeOnArticleEvent($isLike,Auth::user(),$request));
 
 }
     

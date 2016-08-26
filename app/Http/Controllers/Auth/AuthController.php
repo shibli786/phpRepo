@@ -84,10 +84,5 @@ class AuthController extends Controller
         ]);
     }
 
-  public function Lok()
-    {
-        dd('dfg');
-       // return $this->logout();
-    }
 
 }

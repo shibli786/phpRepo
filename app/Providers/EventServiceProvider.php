@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+        'App\Events\CommentOnArticleEvent'=>['App\Listeners\CommentOnArticleListner'],
+
+           'App\Events\LikeOnArticleEvent'=>
+           ['App\Listeners\LikeOnArticleListener'],
     ];
 
     /**

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Article;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use Log;
+use App\Events\CommentOnArticleEvent;
 
 class CommentsController extends Controller
 {
@@ -39,11 +41,16 @@ class CommentsController extends Controller
      */
     public function store(Request $request,Article $id)
     {
-        \Log::info($request);
+
+        Log::info($request);
         $comment=new Comment;
         $comment->user_id=Auth::user()->id;
         $comment->body=$request->body;
         $id->comments()->save($comment);
+
+        //firing an event of commenting on post for notifying the author of article
+       
+        \Event::fire(new CommentOnArticleEvent($comment));
 
 
     }
