@@ -7,9 +7,18 @@ use Log;
 //>>>>>>> 71a91ae1695a1be5cab23601fde7f6fcdafc2060
 use App\User;
 use Validator;
+use App\Events\LoginEvent;
+use App\LikeNotification;
+use App\CommentNotification;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
+
+
+
 
 class AuthController extends Controller
 {
@@ -31,7 +40,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
    
     /**
@@ -84,5 +93,46 @@ class AuthController extends Controller
         ]);
     }
 
+    protected function authenticated($request, $user)
+    {
+
+        \Log::info("authenticated method in auth controller is called");
+        \Log::info($request);
+        \Log::info($user);
+          \Event::fire(new LoginEvent($user));
+
+
+         
+         // $cc=$like_notification->merge($comment_notification);
+          //  \Log::info($cc);
+
+          //array_merge($mc->toArray(), $sm->toArray());
+
+           // \Log::info($like_notification->toArray());
+               //        \Log::info($comment_notification->toArray());
+//
+
+         // dd($like_notification->toArray());
+
+          return redirect("/");
+
+
+
+
+
+    }
+
+    public function notification()
+    {
+         $like_notification=LikeNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get()->toArray();
+
+          $comment_notification=CommentNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get();
+
+
+            return view('master',["like"=>$like_notification]);
+
+
+       
+    }
 
 }

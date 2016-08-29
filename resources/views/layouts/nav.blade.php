@@ -25,7 +25,13 @@
                     <li><a href="{{ url('/articles/create') }}">Create Article</a></li>
                     <li><a href="{{ url('/myarticles') }}">My Articles</a></li>
                     <li><a href="{{ url('/connections') }}">Connections</a></li>
-                    <li><a href="{{ url('/notification') }}">Notification</a></li>
+                    <li id="notificationLink"><a href="#">Notification</a>
+
+
+                    @include('layouts.notification_box')
+
+
+                    </li>
                      <li><a href="{{ url('/messages') }}">Messages</a></li>
                      @endif
                 </ul>
@@ -43,7 +49,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/users/'.Auth::user()->id)}}"><i class="fa fa-btn fa-sign-out"></i>Profile</a></li>
+                        <li><a href="{{ url('/users/'.Auth::user()->id)}}"><i class="fa fa-btn fa-sign-out"></i>Profile</a></li>
                               <li><a href="{{ url('/setting') }}"><i class="fa fa-btn fa-sign-out"></i>Setting</a></li>
                                 <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
 

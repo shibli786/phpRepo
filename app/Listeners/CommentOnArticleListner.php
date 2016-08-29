@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\CommentOnArticleEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Notification;
+use App\CommentNotification;
 
 class CommentOnArticleListner
 {
@@ -33,11 +33,11 @@ class CommentOnArticleListner
        // \Log::info($event);
             \Log::info($event->comment);
 
-            $notification=new Notification;
+            $notification=new CommentNotification;
             $notification->user_id=$event->comment->user_id;
             $notification->article_id=$event->comment->article_id;
+            $notification->comment_id=$event->comment->id;
             $notification->mark_as_read=0;
-            $notification->type="comment";
             $notification->save();
             
             

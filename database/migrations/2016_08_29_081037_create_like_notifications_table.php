@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotificationsTable extends Migration
+class CreateLikeNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,18 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('like_notifications', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('like_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('article_id')->unsigned();
             $table->integer('mark_as_read')->unsigned();
-            $table->string('type');
-            $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');        });
+            $table->foreign('like_id')->references('id')->on('likes');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade'); 
+            $table->timestamps();     
+
+              });
     }
 
     /**
@@ -30,6 +33,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('notifications');
+        Schema::drop('like_notifications');
     }
 }

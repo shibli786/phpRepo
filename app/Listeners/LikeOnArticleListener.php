@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\LikeOnArticleEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Notification;
+use App\LikeNotification;
 
 class LikeOnArticleListener
 {
@@ -28,13 +28,24 @@ class LikeOnArticleListener
     public function handle(LikeOnArticleEvent $event)
     {
 
-        \Log::info("like listener is called");
-            $notification=new Notification;
+
+
+
+            \Log::info("like listener is called");
+            $notification=new LikeNotification;
+        
+            if($event->isLike){
+            $notification->like_id=$event->like->id;
             $notification->user_id=$event->user->id;
             $notification->article_id=$event->request->article_id;
             $notification->mark_as_read=0;
-            $notification->type="like";
             $notification->save();
+
+
+
+            }
+
+           
             
     }
 }

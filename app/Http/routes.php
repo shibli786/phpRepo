@@ -11,18 +11,15 @@ Route::get('/users','UserController@index');
 Route::get('/tags','TagController@index');
 Route::get('/tags/{id}','TagController@show');
 Route::post('/like','ArticlesController@postLike');
+
 Route::post('/articles/{id}/comment','CommentsController@store');
+
 Route::get('users/{user}','UserController@show');
 Route::get('send','UserController@sendEmail');
 Route::resource('articles','ArticlesController');
 
 
-Route::get('/',function(){
-
-
-return view('master');
-
-});
+Route::get('/','Auth\AuthController@notification');
 
 
 

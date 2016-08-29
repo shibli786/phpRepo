@@ -187,7 +187,7 @@ class ArticlesController extends Controller{
 
 
         //firing an event of liking and unliking on post for notifying the authorof article
-        \Event::fire(new LikeOnArticleEvent($isLike,Auth::user(),$request));
+        \Event::fire(new LikeOnArticleEvent($isLike,Auth::user(),$request,$like));
 
 }
     

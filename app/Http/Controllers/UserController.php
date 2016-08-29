@@ -15,6 +15,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
+
     public function index()
     {
         $users=User::paginate(50);
@@ -23,15 +26,20 @@ class UserController extends Controller
         return view('userview.list')->with(compact('arr'));
     }
 
-    /**
-     * Show the form for creating a new resource.
+    /*
+     * 
+     Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
-        //
-    }
+        
+
+
+
+    }  
 
     /**
      * Store a newly created resource in storage.
@@ -91,13 +99,15 @@ class UserController extends Controller
     }
 
 
+
+
     public function sendEmail()
     {
+       
         //  \Log::info("Request Cycle with Queues Begins");
         //$this->dispatch(new SendWelcomEmail());
         //\Log::info("Request Cycle with Queues Ends");
-    
-        \Log::info("Request cycle without Queues started");
+       \Log::info("Request cycle without Queues started");
         Mail::send('email.view', ['data'=>'data'], function ($message) {
         $message->from('syed.shibli@daffodilsw.com', 'Christian Nwmaba');
         $message->to('mshibli786@gmail.com');

@@ -72,5 +72,13 @@ class Article extends Model
          return $this->hasMany('App\Comment');
     }
 
+    
+
+
+    public function commentNotifications(){
+
+
+    	return $this->hasMany('App\CommentNotification');
+    }
  
 }

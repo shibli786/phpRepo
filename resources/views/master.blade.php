@@ -18,7 +18,7 @@
 	@include('layouts.nav')
 
 
-
+	{{$like[0]->id}}
 
 		<div class="container whole" >
 <div class="row">

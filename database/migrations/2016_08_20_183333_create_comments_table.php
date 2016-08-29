@@ -14,7 +14,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
 
-            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->integer('article_id')->unsigned()->index();
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
@@ -22,6 +22,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('body');
             $table->timestamps();
+                        $table->engine = 'InnoDB';
         });
     }
 

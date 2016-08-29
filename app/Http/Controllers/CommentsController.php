@@ -42,6 +42,8 @@ class CommentsController extends Controller
     public function store(Request $request,Article $id)
     {
 
+        \Log::info("comment method is called");
+
         Log::info($request);
         $comment=new Comment;
         $comment->user_id=Auth::user()->id;
