@@ -25,7 +25,7 @@
                     <li><a href="{{ url('/articles/create') }}">Create Article</a></li>
                     <li><a href="{{ url('/myarticles') }}">My Articles</a></li>
                     <li><a href="{{ url('/connections') }}">Connections</a></li>
-                    <li id="notificationLink"><a href="#">Notification</a>
+                    <li><a href="#" class="notificationLink" >Notification</a>
 
 
                     @include('layouts.notification_box')

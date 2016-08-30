@@ -15,7 +15,7 @@ class ArticlesController extends Controller{
 
     public function __construct(){
         Log::info('ArticlesControlle executed');
-        $this->middleware('auth',['only'=>['create','store','edit','postLike','destroy']]);
+        $this->middleware('auth',['only'=>['create','store','edit','postLike','destroy','userArticle','store','destroy']]);
     }
 
 

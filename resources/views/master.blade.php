@@ -5,6 +5,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{URL::to('src/css/main.css')}}">
  	<script src="//code.jquery.com/jquery.js"></script>
+ 	
  <script type="text/javascript" src="{{URL::to('src/js/app.js')}}"></script>
  <script type="text/javascript" src="{{URL::to('src/js/jquery.js')}}"></script>
 <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
@@ -18,7 +19,7 @@
 	@include('layouts.nav')
 
 
-	{{$like[0]->id}}
+
 
 		<div class="container whole" >
 <div class="row">

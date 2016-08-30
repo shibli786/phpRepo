@@ -19,7 +19,14 @@ Route::get('send','UserController@sendEmail');
 Route::resource('articles','ArticlesController');
 
 
-Route::get('/','Auth\AuthController@notification');
+Route::get('/home','Auth\AuthController@notification');
+
+
+Route::get('/',function ()
+{
+  return view('master');
+});
+
 
 
 

@@ -33,7 +33,7 @@
 
 
 			@endforeach
-				<script type="text/javascript" src="{{URL::to('src/js/app.js')}}"></script>
+	
 
 		    	<script type="text/javascript">
 

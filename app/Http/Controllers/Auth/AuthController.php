@@ -42,7 +42,9 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/home';
 
-   
+    protected $user;
+    protected $request;
+    protected $notifications;
     /**
      * Create a new authentication controller instance.
      *
@@ -50,25 +52,14 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-//<<<<<<< HEAD
+
         Log::info('Auth controller constructed executed: ');
-
-             //// $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-
-//=======
-            
         Log::info('Auth controller executed');
+        $this->middleware('guest',['only'=>['getLogin','getRegister']]);
+        $this->middleware('auth',['only'=>['create','notification']]);
+}
 
-       $this->middleware('guest',['only'=>['getLogin','getRegister']]);
-//>>>>>>> 71a91ae1695a1be5cab23601fde7f6fcdafc2060
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-    
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+   
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -95,26 +86,14 @@ class AuthController extends Controller
 
     protected function authenticated($request, $user)
     {
-
+        $this->request=$request;
+        $this->user=$user;
         \Log::info("authenticated method in auth controller is called");
         \Log::info($request);
         \Log::info($user);
-          \Event::fire(new LoginEvent($user));
-
-
-         
-         // $cc=$like_notification->merge($comment_notification);
-          //  \Log::info($cc);
-
-          //array_merge($mc->toArray(), $sm->toArray());
-
-           // \Log::info($like_notification->toArray());
-               //        \Log::info($comment_notification->toArray());
-//
-
-         // dd($like_notification->toArray());
-
-          return redirect("/");
+       
+        // dd($this->notifications);
+          return redirect("/home");
 
 
 
@@ -124,14 +103,16 @@ class AuthController extends Controller
 
     public function notification()
     {
-         $like_notification=LikeNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get()->toArray();
-
-          $comment_notification=CommentNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get();
+          $this->notifications=\Event::fire(new LoginEvent(Auth::user()));
 
 
-            return view('master',["like"=>$like_notification]);
+               //  dd($this->notifications);
+        //  dd('notification'));
+      //  dd(['notification'=>$this->notifications]);
 
 
+   
+      return view('home',['notification'=>$this->notifications]);
        
     }
 
