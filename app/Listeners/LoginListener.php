@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\LikeNotification;
 use App\CommentNotification;
 use Illuminate\Support\Facades\Auth;
+use App\Events\Listener;
 
 class LoginListener
 {
@@ -27,7 +28,7 @@ class LoginListener
      * @param  LoginEvent  $event
      * @return void
      */
-    public function handle(LoginEvent $event)
+    public function handle(Listener $event)
     {
         \Log::info("login event id fired");
 

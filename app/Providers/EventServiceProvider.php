@@ -20,7 +20,11 @@ class EventServiceProvider extends ServiceProvider
 
            'App\Events\LikeOnArticleEvent'=>
            ['App\Listeners\LikeOnArticleListener'],
+
            'App\Events\LoginEvent'=>
+           ['App\Listeners\LoginListener'],
+
+           'App\Events\RefreshPageEvent'=>
            ['App\Listeners\LoginListener'],
     ];
 

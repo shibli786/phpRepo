@@ -5,8 +5,9 @@ namespace App\Events;
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Events\Listener;
 
-class RefreshPageEvent extends Event
+class RefreshPageEvent extends Event  implements Listener
 {
     use SerializesModels;
  public $user;
@@ -15,7 +16,7 @@ class RefreshPageEvent extends Event
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
          $this->$user=$user;
     }

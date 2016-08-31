@@ -16,6 +16,9 @@
 
 <body>
 
+	@if(Auth::user())
+	<?php $notification=event(new App\Events\RefreshPageEvent(Auth::user()))?>
+	@endif
 	@include('layouts.nav')
 
 

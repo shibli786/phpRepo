@@ -201,6 +201,8 @@ position:relative
 
 .notificationContainer 
 {
+
+background-color:  #ccdcff;
 background-color: #fff;
 margin-top: 35px;
 border: 1px solid rgba(100, 100, 100, .4);
@@ -215,6 +217,7 @@ display: none; // Enable this after jquery implementation
 }
 // Popup Arrow
 .notificationContainer:before {
+background-color:  #ccdcff;
 content: '';
 display: block;
 position: absolute;
@@ -226,7 +229,7 @@ border-color: transparent transparent white;
 margin-top: 80px;
 margin-left: 188px;
 }
-#notificationTitle
+.notificationTitle
 {
 font-weight: bold;
 padding: 8px;
@@ -235,15 +238,21 @@ background-color: #ffffff;
 position: fixed;
 z-index: 1000;
 width: 384px;
-border-bottom: 1px solid #dddddd;
+
 }
+
+
 
 
 .notificationsBody
 {
-	margin-left: 15px;
+	margin-left: 10px;
+	padding-top:9px;
+	margin-right: 10px;
+	min-height:45px;
 
-min-height:25px;
+
+
 }
 
 
@@ -299,8 +308,10 @@ color:black;
 ul.tab li:hover {background-color: #ddd;}
 
 
-/* Create an active/current tablink class */
 
+
+/* Create an active/current tablink class */
+ul.tab li:focus , .active{background-color: #ccc;}
 
 /* Style the tab content */
 .tabcontent {
@@ -314,6 +325,36 @@ ul.tab li:hover {background-color: #ddd;}
 color: #aaa;
 font-style: italic;
 margin-left: 18px;
+font-size: small;
 
 
+}
+
+
+.messageContainer 
+{
+
+background-color:  #ccdcff;
+background-color: #fff;
+margin-top: 35px;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 400px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+}
+.messageTitle{
+	 list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    height:40px;
+    text-align: center;
+    padding-top: 10px;
 }

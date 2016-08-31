@@ -5,8 +5,9 @@ namespace App\Events;
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Events\Listener;
 
-class LoginEvent extends Event
+class LoginEvent extends Event implements Listener
 {
     use SerializesModels;
 

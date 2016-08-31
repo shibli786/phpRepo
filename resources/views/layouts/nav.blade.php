@@ -24,7 +24,7 @@
                     @if(Auth::check())
                     <li><a href="{{ url('/articles/create') }}">Create Article</a></li>
                     <li><a href="{{ url('/myarticles') }}">My Articles</a></li>
-                    <li><a href="{{ url('/connections') }}">Connections</a></li>
+            
                     <li><a href="#" class="notificationLink" >Notification</a>
 
 
@@ -32,7 +32,12 @@
 
 
                     </li>
-                     <li><a href="{{ url('/messages') }}">Messages</a></li>
+                     <li><a class="messageLink" href="#">Messages</a>
+                         @include('layouts.message_box')
+
+
+                     </li>
+                             <li><a href="{{ url('/connections') }}">Connections</a></li>
                      @endif
                 </ul>
 

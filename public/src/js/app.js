@@ -141,6 +141,9 @@ $(".notificationLink").on('click',function (event) {
 
 	$('.notificationContainer').slideUp();}
 	else{
+		if ($('.messageContainer').is(':visible')){
+
+	$('.messageContainer').slideUp();}
 		$('.notificationContainer').slideDown();
 
 	}
@@ -153,7 +156,24 @@ $(".notificationLink").on('click',function (event) {
 
 
 
+$(".messageLink").on('click',function (event) {
+	event.preventDefault();
+	console.log("messageContainer");
 
+
+	if ($('.messageContainer').is(':visible')){
+
+	$('.messageContainer').slideUp();}
+	else{
+
+		if ($('.notificationContainer').is(':visible')){
+				$('.notificationContainer').slideUp();
+
+		}
+		$('.messageContainer').slideDown();
+
+	}
+})
 
 
 
@@ -173,7 +193,7 @@ $(".notificationLink").on('click',function (event) {
 
 function notify(evt, tabName) {
     // Declare all variables
-
+evt.preventDefault();
     var i, tabcontent, tablinks;
 
     // Get all elements with class="tabcontent" and hide them
@@ -183,14 +203,23 @@ function notify(evt, tabName) {
     }
 
     // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
+    tablinks = document.getElementsByClassName("asd");
     for (i = 0; i < tablinks.length; i++) {
+    	      console.log( tablinks[i].className);
         tablinks[i].className = tablinks[i].className.replace(" active", "");
+         console.log( tablinks[i].className);
+
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+
+    if(evt.currentTarget.className=="comment-not active"){
+    	
+    }
+
+   console.log( evt.currentTarget.className);
 }
 
 
