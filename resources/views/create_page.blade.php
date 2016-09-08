@@ -12,7 +12,10 @@
 			<strong>Title:</strong>
 			<input class="form-control"  type="text" name="title"></input>
 			<strong>Body:</strong>
-			<textarea class="form-control article-area" name="body" placeholder="Write your Content"></textarea>
+			<div id="summernote">
+			<textarea id="summernote" class="form-control article-area" name="body" placeholder="Write your Content"></textarea>
+			
+			</div>
 			<input type="hidden" name="_token" value="{{{ csrf_token() }}}" >
 			<button type="submit" class="btn btn-primary">Add Article
 			</button>
@@ -27,6 +30,7 @@
 
 	</div>
 	
+   
 
 
 @stop

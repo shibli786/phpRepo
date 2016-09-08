@@ -1,7 +1,7 @@
 
 //like ajax request
 $(document).ready(function(){
-	$('.notificationContainer').slideUp();
+
 $('.like').on('click',function (event) {
 	 event.preventDefault();
 	 console.log('called val '+$(this).parent().attr('val'));
@@ -75,22 +75,6 @@ $('.delete').on('click',function(event){
 
 
 
-//comment post ajax request
-$('.post-button').on('click',function(event){
-postComment(event);	
-
-});
-
-
-
- function runScript(e) {
-				    if (e.keyCode == 13) {
-
-				    $('.comments').scrollTop = 9999999;
-				     postComment(e);
-
-				    }
-				}
 
 				
 
@@ -118,6 +102,9 @@ postComment(event);
 
 
 	}
+
+
+
 
 
 
@@ -176,8 +163,37 @@ $(".messageLink").on('click',function (event) {
 })
 
 
+$(".notificationsBody").on('click',function (event) {
+
+event.preventDefault();
+var val=$(this).attr('idval');
+console.log("id  is "+val);
+if($(this).attr('type')=='like'){
+$.ajax({
+	method:"POST",
+		url:"/readlike/"+val,
+	
+		data:{'id':val,'_token':token}
 
 
+});
+
+}
+else{
+
+	$.ajax({
+	method:"post",
+		url:"/readcomment/"+val,
+	
+		data:{'id':val,'_token':token}
+
+
+});
+
+
+}
+
+});
 
 
 
@@ -189,6 +205,48 @@ $(".messageLink").on('click',function (event) {
 
 
 });
+
+
+
+
+
+
+
+ function runScript(e) {
+				    if (e.keyCode == 13) {
+
+				    			document.getElementById('comments').scrollTop = 9999999;
+
+				     postComment(e);
+				    }
+
+	
+}
+
+
+
+
+function postComment(event) {
+
+event.preventDefault();
+var val=$(".post").attr('val');
+if(isloggedin)
+$(".comments").append("<div class='row comment-by-user'> <a class= 'close pull-right' href=''>&times;</a><a href='#'><strong class='name'>"+authName+"</strong></a><p class='body'>"+$('.post-comment').val()+"</p><p class='info'>"+Date.now()+"</p></div> ");
+else{
+$(".comments").append("<div class='row comment-by-user'><a class= 'close pull-right' href=''>&times;</a> <strong class='name'>"+authName+"</strong><p class='body'>"+$('.post-comment').val()+"</p><p class='info'>"+Date.now()+"</p></div> ");
+}
+
+$.ajax({
+method:"post", url:commentUrl,data:{"body":$('.post-comment').val(),'_token':token,'article_id':val}}).done();
+$('.post-comment').val("");
+console.log($(".count-comment").text());
+$(".count-comment").text(parseInt($(".count-comment").text())+1);
+document.getElementById('comm').scrollTop = 9999999;
+
+}
+
+
+
 
 
 function notify(evt, tabName) {
@@ -221,12 +279,6 @@ evt.preventDefault();
 
    console.log( evt.currentTarget.className);
 }
-
-
-
-
-
-
 
 
 

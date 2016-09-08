@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\LikeNotification;
 
 use App\Http\Requests;
 use App\Jobs\SendWelcomEmail;
@@ -114,5 +115,13 @@ class UserController extends Controller
         });
        \Log::info("Request cycle without Queues finished");
 
+    }
+
+    public function markAsRead(LikeNotification $id)
+    {
+        \Log::info($id);
+        $id->update(['mark_as_read' => 1]);
+        \Log::info("mark_as_read");
+        
     }
 }

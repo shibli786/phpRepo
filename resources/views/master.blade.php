@@ -6,11 +6,11 @@
 <link rel="stylesheet" type="text/css" href="{{URL::to('src/css/main.css')}}">
  	<script src="//code.jquery.com/jquery.js"></script>
  	
+
+ 	
  <script type="text/javascript" src="{{URL::to('src/js/app.js')}}"></script>
- <script type="text/javascript" src="{{URL::to('src/js/jquery.js')}}"></script>
-<meta http-equiv="cache-control" content="private, max-age=0, no-cache">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
+
+
 
 </head>
 
@@ -67,6 +67,14 @@
 
 
 <div class="footer "><p class="footer-text">cc 20150-16<p></div>
+
+
+<script type="text/javascript">
+	
+
+var token=	'{{Session::token()}}';
+	
+</script>
 </body>
 
 

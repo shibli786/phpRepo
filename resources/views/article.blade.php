@@ -5,7 +5,6 @@
 
 	<div class="row posts col-md-8 col-md-offset-2" >
 
-		<h1> Articles</h1><hr>
 			@foreach($articles as $article)
 		
 			<!--<p class="btn-group">
@@ -13,10 +12,10 @@
 			<a class="btn btn-success" href="articles/{{$article->id}}/edit">Edit</a>
 
 			<a href="articles/{{$article->id}}/delete" class="btn btn-danger">Delete</a></p>-->
-		
+		<span ><a class="article-title"  href="{{URL::to('articles/'.$article->id)}}">{{$article->title}}</a></span>
 			<article class="post"'>
 
-				<a href="{{URL::to('articles/'.$article->id)}}"><h4>{{$article->title}}</h4></a>
+				
 					
 					@if ( strlen($article->body ) > 210 )
 						<p>{{ substr( $article->body,0,201)."...  "}}
@@ -28,7 +27,7 @@
 					
 						@include('partials.like_comment_share')
 		    </article>
-
+		    <hr>
 		     	 		     
 
 

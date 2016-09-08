@@ -18,12 +18,14 @@ class CreateCommentNotificationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('article_id')->unsigned();
             $table->integer('mark_as_read')->unsigned();
+            $table->integer('owner_id')->unsigned();
+              $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');      
             $table->timestamps();
-            $table->foreign('comment_id')->references('id')->on('comments');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');     
-         
-
+     
+         //   $table->foreign('comment_id')->references('id')->on('comments')->onDelete('set null');
+           // $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('article_id')->references('id')->on('articles')->onDelete('set null');  
+              
 
                });
     }

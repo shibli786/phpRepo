@@ -19,11 +19,13 @@ class CommentOnArticleEvent extends Event
 
 
   public $comment;
+  public $article;
     
 
-    public function __construct(Comment $comment)
+    public function __construct(Comment $comment,$article)
     {
         $this->comment=$comment;
+        $this->article=$article;
     }
 
    /**

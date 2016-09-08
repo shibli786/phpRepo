@@ -1,8 +1,10 @@
 <?php
 
+\Log::info("route");
 
 
-
+Route::post('/readlike/{id}','UserController@markAsRead');
+Route::post('readcomment/{id}','CommentsController@markAsRead');
 
 
 Route::get('/myarticles','ArticlesController@userArticle');
@@ -20,6 +22,7 @@ Route::resource('articles','ArticlesController');
 
 
 Route::get('/home','Auth\AuthController@notification');
+
 
 
 Route::get('/',function ()

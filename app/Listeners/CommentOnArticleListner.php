@@ -38,6 +38,7 @@ class CommentOnArticleListner
             $notification->article_id=$event->comment->article_id;
             $notification->comment_id=$event->comment->id;
             $notification->mark_as_read=0;
+            $notification->owner_id=$event->article->user()->get()->first()->id;
             $notification->save();
             
             

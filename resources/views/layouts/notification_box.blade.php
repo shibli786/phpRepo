@@ -21,13 +21,13 @@
 			@if(isset($notification)) 
 				@foreach($notification[0]['like'] as $notify)
 					@if(Auth::user()->id!=App\User::findOrFail($notify['user_id'])->id)
-						<div class="row notificationsBody">
-
+						<div class="row notificationsBody " idval="{{$notify['id']}}" type="like" >
+						<a href="">
 							{{App\User::findOrFail($notify['user_id'])->name}} Liked your Article
 
 							<span class="info">{{App\User::findOrFail($notify['user_id'])->created_at}}</span>
 
-
+							</a>
 						</div>
 
 						<hr>
@@ -45,11 +45,11 @@
 		@if(isset($notification)) 
 			@foreach($notification[0]['comments'] as $notify)
 				@if(Auth::user()->id!=App\User::findOrFail($notify['user_id'])->id)
-					<div class="row notificationsBody">
-
+					<div class="row notificationsBody" idval="{{$notify['id']}}"  type="comment">
+						<a href="#">
 						{{$user=App\User::findOrFail($notify['user_id'])->name}} Commented on your Article
 						<span class="info">{{App\User::findOrFail($notify['user_id'])->created_at}}</span>
-
+						</a>
 					</div>
 					<hr>
 				@endif
@@ -76,3 +76,8 @@
 
 
 </div>
+<script type="text/javascript">
+
+
+
+</script>

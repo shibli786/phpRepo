@@ -12,7 +12,7 @@
 	</article>
 
 
-	<div class="row comments " id="comments">
+	<div class="row comments" id="comm">
 		@foreach($comments as $comment)
 
 			<div class="row comment-by-user">
@@ -38,7 +38,7 @@
 		<div class="row comment-form">
 
 		<textarea  class="form-control post-comment form-control"  onkeypress="return runScript(event)" name="body" placeholder="Write a comment"></textarea>
-		<button class="btn btn-info pull-right  post-button">Comment</button>
+		<button onclick="postComment(event)" class="btn btn-info pull-right  post-button">Comment</button>
 		</div>
 		@else
 		<div class="row login-to-comment">

@@ -39,6 +39,7 @@ class LikeOnArticleListener
             $notification->user_id=$event->user->id;
             $notification->article_id=$event->request->article_id;
             $notification->mark_as_read=0;
+            $notification->owner_id=$event->article->user()->get()->first()->id;
             $notification->save();
 
 

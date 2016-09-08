@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
+use App\CommentNotification;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Log;
+use App\Like;
 use App\Events\CommentOnArticleEvent;
 
 class CommentsController extends Controller
@@ -52,7 +54,7 @@ class CommentsController extends Controller
 
         //firing an event of commenting on post for notifying the author of article
        
-        \Event::fire(new CommentOnArticleEvent($comment));
+        \Event::fire(new CommentOnArticleEvent($comment,$id));
 
 
     }
@@ -100,5 +102,16 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+ public function markAsRead(CommentNotification $id)
+    {
+        \Log::info($id);
+        $id->update(['mark_as_read' => 1]);
+        \Log::info("mark_as_read");
+
+                \Log::info($id);
+        
     }
 }

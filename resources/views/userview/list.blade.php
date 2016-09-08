@@ -24,10 +24,10 @@
 <div style="margin-bottom:30px;"class="col-md-3">
 
 @if(isset($item->tag_name))
-<a href="tags/{{$item->id}}">{{
-$item->tag_name." x "}}</a>{{$item->articles()->count()}}
+<a class="article-title" href="tags/{{$item->id}}">{{
+$item->tag_name." x "}}{{$item->articles()->count()}}</a>
 @else
-<a href="users/{{$item->id}}">{{$item->name."          "}}</a><p>{{ $item->email." x "}}{{$item->tags()->count()}}</p>
+<a class="article-title" href="users/{{$item->id}}">{{$item->name.""}}</a><p>{{ $item->email." x "}}{{$item->tags()->count()}}</p>
 @endif
 </div>
 @endforeach

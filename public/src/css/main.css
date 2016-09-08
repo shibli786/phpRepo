@@ -38,7 +38,7 @@ min-height: 300px;
 height:60%;
 margin-top: 20px;
 overflow-y: auto;
-overflow: auto; 
+overflow: auto;
 border-left: 3px solid #0000FF;
 margin-left: 50px;
 
@@ -324,7 +324,7 @@ ul.tab li:focus , .active{background-color: #ccc;}
 .info{
 color: #aaa;
 font-style: italic;
-margin-left: 18px;
+
 font-size: small;
 
 
@@ -357,4 +357,31 @@ display: none; // Enable this after jquery implementation
     height:40px;
     text-align: center;
     padding-top: 10px;
+}
+
+
+
+
+/* Make the badge float in the top right corner of the button */
+.button__badge {
+  background-color: #fa3e3e;
+  border-radius: 2px;
+  color: white;
+ 
+  padding: 1px 3px;
+  margin-top: 5px;
+  font-size: 10px;
+  
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: 0;
+  right: 0;
+}
+.article-title{
+
+
+	font-size: 19px;
+color: #333;
+letter-spacing: -0.5px;
+line-height: 1.25;
+font-weight: bold;
 }

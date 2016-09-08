@@ -36,13 +36,16 @@ class LoginListener
 
 
 
-         $like_notification=LikeNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get()->toArray();
-          $comment_notification=CommentNotification::where('article_id',Auth::user()->id)->where('mark_as_read','0')->get()->toArray();
+         $like_notification=LikeNotification::where('owner_id',Auth::user()->id)->where('mark_as_read','0')->whereNotIn('user_id', [Auth::user()->id])->get()->toArray();
+          $comment_notification=CommentNotification::where('owner_id',Auth::user()->id)->where('mark_as_read','0')->whereNotIn('user_id', [Auth::user()->id])->get()->toArray();
+          \Log::info($like_notification);
 
-                
-          $notifications=["like"=>$like_notification,'comments'=>$comment_notification];
+        $likeCount=count($like_notification);
+        $commentCount=count($comment_notification);
+       //dd($like_notification);
+         $notifications=["like"=>$like_notification,'comments'=>$comment_notification,'likeCount'=>$likeCount,'commentCount'=>$commentCount];
 
-        //dd($notifications);
+       // dd($notifications);
 
         return $notifications;
 

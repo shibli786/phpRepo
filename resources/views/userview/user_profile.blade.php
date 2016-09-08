@@ -48,7 +48,7 @@
 		</div>
 		
 
-		@foreach($user->tags()->get() as $tag)
+		@foreach($user->tags()->get()->unique() as $tag)
 		<div class="row tag-container">
 	
 				<div class="row abc">

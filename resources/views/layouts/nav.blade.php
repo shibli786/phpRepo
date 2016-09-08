@@ -26,15 +26,20 @@
                     <li><a href="{{ url('/myarticles') }}">My Articles</a></li>
             
                     <li><a href="#" class="notificationLink" >Notification</a>
+    <span class="button__badge">
+{{$notification[0]['likeCount']+$notification[0]['commentCount']}}
 
+   </span>
 
                     @include('layouts.notification_box')
 
 
+
                     </li>
                      <li><a class="messageLink" href="#">Messages</a>
-                         @include('layouts.message_box')
-
+           
+                             <span class="button__badge">5</span>
+                                           @include('layouts.message_box')
 
                      </li>
                              <li><a href="{{ url('/connections') }}">Connections</a></li>
